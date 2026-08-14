@@ -1,0 +1,22 @@
+1. Pow(x, n)
+
+class Solution:
+    def cal(self, x, n):
+        if n==0:
+            return 1
+        half = self.cal(x,n//2)
+        if n%2==0:
+            return half*half
+        return x*half*half
+
+    def myPow(self, x: float, n: int) -> float:
+        sign = 0
+        if n<0:
+            sign = -1
+            n = -1*n
+        
+        val = self.cal(x,n)
+        if sign<0:
+            return 1/val
+        return val
+
