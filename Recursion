@@ -20,3 +20,18 @@ class Solution:
             return 1/val
         return val
 
+2. Count Good Numbers
+
+class Solution:
+    def countGoodNumbers(self, n: int) -> int:
+        MOD = 10**9 + 7
+        half = n//2
+        odd = half
+        even = half
+
+        if n % 2 != 0:
+            even = half+1
+        
+        return (pow(5, even, MOD)*pow(4, odd, MOD))%MOD
+        
+
