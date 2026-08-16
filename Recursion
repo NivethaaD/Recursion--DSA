@@ -34,4 +34,25 @@ class Solution:
         
         return (pow(5, even, MOD)*pow(4, odd, MOD))%MOD
         
+3. Sort a stack
+
+class Solution:
+    def insertSortedWay(self, st, ele):
+        if len(st) == 0 or st[-1]<ele:
+            st.append(ele)
+            return
+        
+        top = st.pop()
+        self.insertSortedWay(st, ele)
+        st.append(top)
+        
+    def sortStack(self, st):
+        # code here
+        if len(st)==0:
+            return
+        
+        ele = st.pop()
+        self.sortStack(st)
+        self.insertSortedWay(st, ele)
+        
 
