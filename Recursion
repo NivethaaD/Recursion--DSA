@@ -55,4 +55,23 @@ class Solution:
         self.sortStack(st)
         self.insertSortedWay(st, ele)
         
+4. Reverse a Stack
+
+class Solution:
+    def reverseFunc(self,st, ele):
+        if len(st) == 0:
+            st.append(ele)
+            return
+
+        top = st.pop()
+        self.reverseFunc(st, ele)
+        st.append(top)
+    
+    def reverseStack(self, st):
+        if len(st)==0:
+            return
+        
+        ele = st.pop()
+        self.reverseStack(st)
+        self.reverseFunc(st, ele)
 
