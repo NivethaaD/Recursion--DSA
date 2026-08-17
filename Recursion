@@ -75,3 +75,24 @@ class Solution:
         self.reverseStack(st)
         self.reverseFunc(st, ele)
 
+5. Generate all the subsequences(Subset)
+
+class Solution:
+    def findAllSubsequence(self, ind, n, nums, ans, temp):
+        if ind==n:
+            ans.append(temp.copy())
+            return
+        
+        temp.append(nums[ind])
+        self.findAllSubsequence(ind+1, n, nums, ans, temp)
+        temp.pop()
+        self.findAllSubsequence(ind+1, n, nums, ans, temp)
+
+
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        n = len(nums)
+        temp = []
+        self.findAllSubsequence(0, n, nums, ans, temp)
+        return ans
+
