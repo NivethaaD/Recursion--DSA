@@ -95,4 +95,3 @@ class Solution:
         temp = []
         self.findAllSubsequence(0, n, nums, ans, temp)
         return ans
-
