@@ -113,3 +113,24 @@ def findSubseqSum(nums, ind, n, sum, k):
 def findWays(nums: List[int], k: int) -> int:
     return findSubseqSum(nums, 0, len(nums), 0, k)
 
+7. Combination Sum
+
+class Solution:
+    def solve(self, target, ind, candidates, temp, res):
+        if target == 0:
+            res.append(temp.copy())
+            return
+        if ind==len(candidates):
+            return
+        if target >= candidates[ind]:
+            temp.append(candidates[ind])
+            self.solve(target-candidates[ind], ind, candidates, temp, res)
+            temp.pop()
+        self.solve(target, ind+1, candidates, temp, res)
+    
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        temp = []
+        res = []
+        self.solve(target, 0, candidates, temp, res)
+        return res
+        
