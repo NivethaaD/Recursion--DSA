@@ -95,3 +95,21 @@ class Solution:
         temp = []
         self.findAllSubsequence(0, n, nums, ans, temp)
         return ans
+
+6.  Count Subsets with Sum K
+
+from typing import List
+
+def findSubseqSum(nums, ind, n, sum, k):
+        if ind==n:
+            if sum == k:
+                return 1
+            return 0
+    
+        take = findSubseqSum(nums, ind+1, n, sum+nums[ind], k)
+        not_take = findSubseqSum(nums, ind+1, n, sum, k)
+        return take+not_take
+
+def findWays(nums: List[int], k: int) -> int:
+    return findSubseqSum(nums, 0, len(nums), 0, k)
+
