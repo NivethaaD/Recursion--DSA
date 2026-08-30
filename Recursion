@@ -151,3 +151,23 @@ class Solution:
         self.solve(0,0,n,"",res)
         return res
 
+9. Subsets II
+
+class Solution:
+    def findAllSubsequence(self, ind, n, nums, ans, temp):
+        if ind==n:
+            ans.add(tuple(temp.copy()))
+            return
+        
+        temp.append(nums[ind])
+        self.findAllSubsequence(ind+1, n, nums, ans, temp)
+        temp.pop()
+        self.findAllSubsequence(ind+1, n, nums, ans, temp)
+
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        ans = set()
+        n = len(nums)
+        temp = list()
+        self.findAllSubsequence(0, n, nums, ans, temp)
+        return sorted(list(ans))
