@@ -171,3 +171,32 @@ class Solution:
         temp = list()
         self.findAllSubsequence(0, n, nums, ans, temp)
         return sorted(list(ans))
+
+10. Combination Sum II
+
+class Solution:
+    def solve(self, ind, target, candidates, temp, ans):
+        if target == 0:
+            ans.append(temp.copy())
+            return
+        
+        for i in range(ind, len(candidates)):
+            if i > 0  and i > ind and candidates[i] == candidates[i-1]:
+                continue
+            
+            if candidates[i] > target:
+                return 
+
+            temp.append(candidates[i])
+            self.solve(i+1, target-candidates[i], candidates, temp, ans)
+            temp.pop()
+
+
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        temp = []
+        ans = []
+        candidates.sort()
+        self.solve(0, target, candidates, temp, ans)
+        return ans
+
+
